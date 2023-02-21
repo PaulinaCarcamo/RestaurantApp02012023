@@ -242,18 +242,18 @@ function Copyright(props) {
 }
 
 
-    // {
-    //     title: 'Enterprise',
-    //     price: '30',
-    //     description: [
-    //         '50 users included',
-    //         '30 GB of storage',
-    //         'Help center access',
-    //         'Phone & email support',
-    //     ],
-    //     buttonText: 'Contact us',
-    //     buttonVariant: 'outlined',
-    // },
+// {
+//     title: 'Enterprise',
+//     price: '30',
+//     description: [
+//         '50 users included',
+//         '30 GB of storage',
+//         'Help center access',
+//         'Phone & email support',
+//     ],
+//     buttonText: 'Contact us',
+//     buttonVariant: 'outlined',
+// },
 
 
 const theme = createTheme();
@@ -271,74 +271,69 @@ export default function SignInSide() {
     return (
 
         <React.Fragment>
-            <Navbar/>
-        <ThemeProvider theme={theme}>
-            <Grid container component="main" sx={{ height: '100vh' }}>
-                <CssBaseline />
+            <Navbar />
+            <ThemeProvider theme={theme}>
+
+                <Grid container component="main" sx={{ height: '100vh' }}>
+                    <CssBaseline />
 
 
 
- {/* Hero unit */}
- <Box
-          sx={{
-            bgcolor: 'background.paper',
-            pt: 8,
-            pb: 6,
-            mx: 'auto',
-          }}
-        >
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Album layout
-            </Typography>
-            <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              Something short and leading about the collection below—its contents,
-              the creator, etc. Make it short and sweet, but not too short so folks
-              don&apos;t simply skip over it entirely.
-            </Typography>
-            <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">Main call to action</Button>
-              <Button variant="outlined">Secondary action</Button>
-            </Stack>
-          </Container>
-        </Box>
-        {/* <Container sx={{ py: 8 }} maxWidth="md"> */}
-          {/* End hero unit */}
+                    {/* Hero unit */}
+                    <Box
+                        sx={{
+                            bgcolor: 'background.paper',
+                            pt: 8,
+                            pb: 6,
+                            mx: 'auto',
+                            my: 4
+                        }}
+                    >
+                        <Container maxWidth="sm">
+                            <Typography
+                                component="h1"
+                                variant="h2"
+                                align="center"
+                                color="text.primary"
+                                gutterBottom
+                            >
+                                Bistro Café
+                            </Typography>
+                            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+                            Bistro's Café is family-owned and has been a long-standing tradition in Alaska for some time now. With retro 1950s details that are unmistakable from the outside in, Bistro's is serving up a classic menu along with some local Alaskan favorites. With delicious dishes such as reindeer sausage, chicken and waffles, a number of skillets, and a classic chili burger with our special chili, this menu is sure to warm anyone up on a cold Alaskan day or night.
+                            </Typography>
+                            <Stack
+                                sx={{ pt: 4 }}
+                                direction="row"
+                                spacing={2}
+                                justifyContent="center"
+                            >
+                                <Button variant="contained">Make a reservation</Button>
+                                <Button variant="outlined">Request delivery</Button>
+                            </Stack>
+                        </Container>
+                    </Box>
+                    {/* <Container sx={{ py: 8 }} maxWidth="md"> */}
+                    {/* End hero unit */}
 
+                    <Grid
+                        item
+                        xs={false}
+                        sm={4}
+                        md={7}
+                        sx={{
+                            backgroundImage: 'url(https://m3arch.com/img/projects/americandiner/americandiner-1.jpg)',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundColor: (t) =>
+                                t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                    />
 
-            
-
-   
-
-                <Grid
-                    item
-                    xs={false}
-                    sm={4}
-                    md={7}
-                    sx={{
-                        backgroundImage: 'url(https://cdn.big4.com.au/getmedia/aa90dcdd-8bfc-4c5b-a653-513c390a3746/Hero_155.jpg)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundColor: (t) =>
-                            t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
-
-            </Grid>
-        </ThemeProvider>
-<Footer/>
+                </Grid>
+            </ThemeProvider>
+            <Footer />
         </React.Fragment>
 
 

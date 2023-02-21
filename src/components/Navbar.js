@@ -9,12 +9,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { teal } from '@mui/material/colors';
-import { blueGrey } from '@mui/material/colors'
-import { Fastfood, FastForward, FoodBank } from '@mui/icons-material';
+import { Fastfood } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 // const color = teal[500]
@@ -35,9 +33,6 @@ const Navbar = () => {
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
@@ -102,11 +97,15 @@ const Navbar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
+
                             {pages.map((page) => (
                                 <MenuItem key={page.title} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page.title}</Typography>
+                                    <Link to={`/${page.route}`} style={{ textDecoration: 'none', color: '#000' }}>
+                                        <Typography textAlign="center">{page.title}</Typography>
+                                    </Link>
                                 </MenuItem>
                             ))}
+
                         </Menu>
                     </Box>
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -126,7 +125,7 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        BISTRO
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -143,33 +142,9 @@ const Navbar = () => {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFB7YTsWCRESfUK4fOfNKQQrun-dAr5aOquespcImJO2_j0nxQOaA-0RtPHiVm2r44Hjg&usqp=CAU" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
+                        <IconButton sx={{ p: 0 }}>
+                            <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFB7YTsWCRESfUK4fOfNKQQrun-dAr5aOquespcImJO2_j0nxQOaA-0RtPHiVm2r44Hjg&usqp=CAU" />
+                        </IconButton>
                     </Box>
                 </Toolbar>
             </Container>

@@ -10,8 +10,8 @@ function Copyright() {
     return (
         <Typography variant="body2" color="white" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            <Link color="inherit" href="https://github.com/PaulinaCarcamo/RestaurantApp02012023">
+                PCZ
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -28,7 +28,7 @@ const Footer = () => {
             <CssBaseline />
             <Box sx={{ bgcolor: '#263238', p: 6, color: 'white' }} component="footer">
                 <Typography variant="h6" align="center" gutterBottom>
-                    Footer
+                    Bistro Café
                 </Typography>
                 <Typography
                     variant="subtitle1"
@@ -36,7 +36,7 @@ const Footer = () => {
                     color="white"
                     component="p"
                 >
-                    Something here to give the footer a purpose!
+                    0742 Evergreen Terrace, Alaska, Fake Av. 46407-3050
                 </Typography>
                 <Copyright />
             </Box>
@@ -45,3 +45,4 @@ const Footer = () => {
 }
 
 export default Footer;
+

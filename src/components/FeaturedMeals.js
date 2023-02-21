@@ -7,7 +7,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 
-function FeaturedPost(props) {
+function FeaturedMeals(props) {
     const { post } = props;
 
     return (
@@ -19,13 +19,13 @@ function FeaturedPost(props) {
                             {post.title}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary">
-                            {post.date}
+                            $ {post.date}
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
                             {post.description}
                         </Typography>
                         <Typography variant="subtitle1" color="primary">
-                            Continue reading...
+                            Delivery
                         </Typography>
                     </CardContent>
                     <CardMedia
@@ -40,7 +40,7 @@ function FeaturedPost(props) {
     );
 }
 
-FeaturedPost.propTypes = {
+FeaturedMeals.propTypes = {
     post: PropTypes.shape({
         date: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
@@ -50,4 +50,4 @@ FeaturedPost.propTypes = {
     }).isRequired,
 };
 
-export default FeaturedPost;
+export default FeaturedMeals;
