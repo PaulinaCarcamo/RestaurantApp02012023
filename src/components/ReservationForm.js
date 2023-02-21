@@ -15,8 +15,18 @@ import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ContactMail } from '@mui/icons-material';
+import { ContactMail, Restaurant } from '@mui/icons-material';
 import { teal } from '@mui/material/colors';
+
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import FirebaseDb from '../firebase/firebase.js';
@@ -28,28 +38,35 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const ContactForm = () => {
+const ReservationForm = () => {
 
     const [name, setName] = React.useState("");
     const [lastname, setLastname] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [phone, setPhone] = React.useState("");
-    const [message, setMessage] = React.useState("");
+    // const [message, setMessage] = React.useState("");
+    const [date, setDate] = React.useState(null);
+    const [time, setTime] = React.useState(null);
+    const [table, setTable] = React.useState("");
     const [open, setOpen] = React.useState(false);
     const [state, setState] = React.useState({
         vertical: 'top',
         horizontal: 'center',
     });
     const { vertical, horizontal } = state;
+    const [value, setValue] = React.useState(null);
+    const [age, setAge] = React.useState('');
 
     const db = getFirestore(FirebaseDb);
-    const dbRef = collection(db, "contacts");
+    const dbRef = collection(db, "reservations");
     const data = {
         name: name,
         lastname: lastname,
         email: email,
         phone: phone,
-        message: message
+        // message: message
+        date: JSON.stringify(date),
+        time: JSON.stringify(time),
     }
 
     const Submit = (e) => {
@@ -72,6 +89,10 @@ const ContactForm = () => {
         setOpen(false);
     };
 
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
+
     return (
         <React.Fragment>
             <ThemeProvider theme={theme}>
@@ -83,7 +104,7 @@ const ContactForm = () => {
                         sm={4}
                         md={7}
                         sx={{
-                            backgroundImage: 'url(https://mui.kitchen/__export/1666876495403/sites/muikitchen/img/2022/10/27/704568eebeb49c347cb9bacc371cbefc.jpeg_1228306336.jpeg)',
+                            backgroundImage: 'url(https://coastiesmag.com.au/wp-content/uploads/2021/02/Diner-1.jpg)',
                             backgroundRepeat: 'no-repeat',
                             backgroundColor: (t) =>
                                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -103,10 +124,10 @@ const ContactForm = () => {
                                 }}
                             >
                                 <Avatar sx={{ m: 1, bgcolor: 'teal' }}>
-                                    <ContactMail />
+                                    <Restaurant />
                                 </Avatar>
                                 <Typography component="h1" variant="h5">
-                                    Contact Us
+                                    Reservation
                                 </Typography>
                                 <Box component="form" noValidate onSubmit={Submit} sx={{ mt: 3 }}>
                                     <Grid container spacing={2}>
@@ -160,7 +181,55 @@ const ContactForm = () => {
                                             />
                                         </Grid>
 
+
+                                        <Grid item xs={12} sm={6}>
+                                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                                <DatePicker
+                                                    label="Date"
+                                                    value={date}
+                                                    onChange={(newDate) => {
+                                                        setDate(newDate);
+                                                    }}
+                                                    renderInput={(params) => <TextField {...params} fullWidth />}
+                                                />
+                                            </LocalizationProvider>
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={6}>
+                                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                                <TimePicker
+                                                    label="Time"
+                                                    value={time}
+                                                    onChange={(newTime) => {
+                                                        setTime(newTime);
+                                                    }}
+                                                    renderInput={(params) => <TextField {...params} fullWidth />}
+                                                />
+                                            </LocalizationProvider>
+                                        </Grid>
+
+
                                         <Grid item xs={12}>
+                                            <FormControl fullWidth>
+                                                <InputLabel id="demo-simple-select-label">Table</InputLabel>
+                                                <Select
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    value={age}
+                                                    label="Table"
+                                                    onChange={handleChange}
+                                                >
+                                                    <MenuItem value={1}>Bar Seating (1 guest)</MenuItem>
+                                                    <MenuItem value={2}>High Top Table (2 guests)</MenuItem>
+                                                    <MenuItem value={4}>Classic Booth (4 guests)</MenuItem>
+                                                    <MenuItem value={6}>Banquet Table (6 guests)</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
+
+
+
+                                        {/* <Grid item xs={12}>
                                             <TextField
                                                 id="outlined-multiline-flexible"
                                                 fullWidth
@@ -170,7 +239,18 @@ const ContactForm = () => {
                                                 value={message}
                                                 onChange={(e) => setMessage(e.target.value)}
                                             />
-                                        </Grid>
+                                        </Grid> */}
+
+                                        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                            <DatePicker
+                                                label="Basic example"
+                                                value={value}
+                                                onChange={(newValue) => {
+                                                    setValue(newValue);
+                                                }}
+                                                renderInput={(params) => <TextField {...params} />}
+                                            />
+                                        </LocalizationProvider> */}
 
                                         <Grid item xs={12}>
                                             <FormControlLabel
@@ -219,4 +299,4 @@ const ContactForm = () => {
     );
 }
 
-export default ContactForm;
+export default ReservationForm;

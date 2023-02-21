@@ -77,7 +77,7 @@ const featuredMeals = [
 
 const theme = createTheme();
 
-export default function Menu() {
+const Menu = () => {
     return (
         <React.Fragment>
             <Navbar />
@@ -101,3 +101,5 @@ export default function Menu() {
         </React.Fragment>
     );
 }
+
+export default Menu;

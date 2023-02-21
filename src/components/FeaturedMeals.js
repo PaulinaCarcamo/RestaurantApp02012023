@@ -6,8 +6,18 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function FeaturedMeals(props) {
+const contentFont = createTheme({
+    typography: {
+        fontFamily: [
+            'Barlow',
+            'serif',
+        ].join(','),
+    },
+});
+
+const FeaturedMeals = (props) => {
     const { post } = props;
 
     return (
@@ -15,13 +25,13 @@ function FeaturedMeals(props) {
             <CardActionArea component="a" href="#">
                 <Card sx={{ display: 'flex' }}>
                     <CardContent sx={{ flex: 1 }}>
-                        <Typography component="h2" variant="h5">
+                        <Typography component="h2" variant="h5" theme={contentFont}>
                             {post.title}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary">
                             $ {post.date}
                         </Typography>
-                        <Typography variant="subtitle1" paragraph>
+                        <Typography variant="subtitle1" paragraph theme={contentFont}>
                             {post.description}
                         </Typography>
                         <Typography variant="subtitle1" color="primary">

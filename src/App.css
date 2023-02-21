@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;400&display=swap');
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+/* .home-title {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+} */
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +42,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

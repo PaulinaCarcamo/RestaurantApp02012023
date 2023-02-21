@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Face, Favorite, LunchDining, Star } from '@mui/icons-material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Avatar from '@mui/material/Avatar';
 // import Stack from '@mui/material/Stack';
@@ -30,6 +31,16 @@ function Copyright(props) {
         </Typography>
     );
 }
+const theme = createTheme();
+
+const contentFont = createTheme({
+    typography: {
+        fontFamily: [
+            'Barlow',
+            'serif',
+        ].join(','),
+    },
+});
 
 const tiers = [
     {
@@ -73,24 +84,31 @@ function AboutUs() {
             <Navbar />
             <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
             <CssBaseline />
-
             {/* Hero unit */}
+
+
             <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+                <ThemeProvider theme={theme}>
+
                 <Typography
                     component="h1"
                     variant="h2"
                     align="center"
-                    color="text.primary"
+                    // color="text.primary"
                     gutterBottom
+                    theme={contentFont}
+                    fontWeight="medium"
                 >
                     Our Restaurant
                 </Typography>
-                <Typography variant="h5" align="center" color="text.secondary" component="p">
+                <Typography variant="h5" align="center" color="text.secondary" component="p"  theme={contentFont}>
                     Bistro's opened its doors for the first time in 1958 and has been serving up classic diner dishes ever since. Not only does this diner offer special menus for the holidays, but it's a popular fixture in Alaska, where the locals know they can go to get comfort food and so much more.
                 </Typography>
+                </ThemeProvider>
             </Container>
             {/* End hero unit */}
-            <Container maxWidth="md" component="main" sx={{mb: 4}}>
+
+            <Container maxWidth="md" component="main" sx={{ mb: 4 }}>
                 <Grid container spacing={5} alignItems="flex-end">
                     {tiers.map((tier) => (
                         // Enterprise card is full width at sm breakpoint
@@ -101,7 +119,9 @@ function AboutUs() {
                             sm={tier.title === 'Enterprise' ? 12 : 6}
                             md={4}
                         >
+                            
                             <Card>
+                       
                                 <CardHeader
                                     title={tier.title}
                                     // subheader={tier.subheader}
