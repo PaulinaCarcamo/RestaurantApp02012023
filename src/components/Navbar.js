@@ -15,10 +15,17 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { teal } from '@mui/material/colors';
 import { blueGrey } from '@mui/material/colors'
 import { Fastfood, FastForward, FoodBank } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 // const color = teal[500]
+// const pages = ['About', 'Menu', 'Contact'];
 
-const pages = ['About', 'Menu', 'Contact'];
+const pages = [
+    { title: "About", route: "about" },
+    { title: "Menu", route: "menu" },
+    { title: "Contact", route: "contact" }
+]
+
 const settings = ['Blog', 'About', 'Menu', 'Contact'];
 
 const Navbar = () => {
@@ -96,8 +103,8 @@ const Navbar = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{page.title}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -121,22 +128,24 @@ const Navbar = () => {
                     >
                         LOGO
                     </Typography>
+
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
+                            <Link to={`/${page.route}`} style={{ textDecoration: 'none' }}>
+                                <Button
+                                    key={page.title}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                >{page.title}
+                                </Button>
+                            </Link>
                         ))}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="https://media-cdn.tripadvisor.com/media/photo-s/0d/51/b7/ba/logo-retro.jpg" />
+                                <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFB7YTsWCRESfUK4fOfNKQQrun-dAr5aOquespcImJO2_j0nxQOaA-0RtPHiVm2r44Hjg&usqp=CAU" />
                             </IconButton>
                         </Tooltip>
                         <Menu

@@ -1,10 +1,12 @@
-// import ContactForm from "../components/ContactForm.js"
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
     return (
         <div>
-            {/* <ContactForm /> */}
+           <Navbar/>
 
+           <Footer/>
         </div>
     )
 }

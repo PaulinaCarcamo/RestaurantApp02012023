@@ -1,13 +1,20 @@
 
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Contact from './views/Contact';
-// import Home from './views/Home.js';
+import ContactForm from './components/ContactForm';
+import Home from './views/Home.js';
 
 function App() {
   return (
     <div className="App">
-      {/* <Home/> */}
-      <Contact/>
+      <BrowserRouter>
+        <Routes>
+          <Route>
+          <Route index element={<Home />} />
+          <Route path='/contact' element={<ContactForm />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
