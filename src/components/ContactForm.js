@@ -17,8 +17,6 @@ import { teal } from '@mui/material/colors';
 
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import FirebaseDb from '../firebase/firebase.js';
-import Navbar from './Navbar.js';
-import Footer from './Footer.js';
 
 const color = teal[500];
 const theme = createTheme();
@@ -55,7 +53,6 @@ const ContactForm = () => {
 
     return (
         <React.Fragment>
-            <Navbar />
             <ThemeProvider theme={theme}>
                 <Grid container component="main" sx={{ height: '90vh' }}>
                     <CssBaseline />
@@ -184,7 +181,6 @@ const ContactForm = () => {
                     </Grid>
                 </Grid>
             </ThemeProvider>
-            <Footer />
         </React.Fragment>
     );
 }
