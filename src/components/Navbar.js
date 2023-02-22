@@ -23,7 +23,7 @@ const pages = [
 
 const actions = [
     { title: "New Reservation", route: "reservation" },
-    { title: "Check Reservation", route: "rsvninfo" },
+    { title: "Check Reservation", route: "rsvnsearch" },
 ]
 
 const Navbar = () => {

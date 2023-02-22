@@ -1,5 +1,5 @@
-import { getFirestore, doc, getDoc, QuerySnapshot } from "firebase/firestore";
-import { useEffect, useState } from "react"
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { useEffect } from "react"
 import FirebaseDb from "../firebase/firebase.js";
 
 //Fetching data from Firebase: Single document. 
@@ -35,7 +35,7 @@ const RsvnDoc = () => {
             }
         };
 
-        const ref = doc(db, "reservations", "12MS7zVH0LMPnt5pRzeI").withConverter(docConverter);
+        const ref = doc(db, "reservations", "x39AJnWLwZPvWKdqJp9y").withConverter(docConverter);
 
         const docSnap = await getDoc(ref);
         if (docSnap.exists()) {

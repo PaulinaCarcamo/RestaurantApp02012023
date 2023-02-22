@@ -10,8 +10,8 @@ function Copyright() {
     return (
         <Typography variant="body2" color="white" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://github.com/PaulinaCarcamo/RestaurantApp02012023">
-                PCZ
+            <Link color="inherit" href="/">
+                BistroCafe
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}

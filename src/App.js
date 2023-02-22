@@ -6,9 +6,9 @@ import Contact from './views/Contact.js';
 import About from './views/About.js';
 import Menu from './views/Menu.js';
 import Rsvn from './views/Reservation.js';
-import RsvnInfo from './components/ReservationInfo.js';
 import './App.css';
-import RsvnDoc from './components/ReservationDoc.js';
+import RsvnDoc from './data/ReservationDoc.js';
+import RsvnSearch from './components/ReservationSearch.js';
 
 function App() {
   return (
@@ -21,8 +21,7 @@ function App() {
             <Route path='/menu' element={<Menu />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/reservation' element={<Rsvn />} />
-            <Route path='/rsvninfo' element={<RsvnInfo/>}/>
-            <Route path='/rsvndoc' element={<RsvnDoc/>}/>
+            <Route path='/rsvnsearch' element={<RsvnSearch />} />
           </Route>
         </Routes>
       </BrowserRouter>
