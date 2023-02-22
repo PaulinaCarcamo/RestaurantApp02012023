@@ -12,13 +12,11 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Tooltip from '@mui/material/Tooltip';
-import { teal } from '@mui/material/colors';
+// import { teal } from '@mui/material/colors';
 import { Fastfood } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
-
 // const color = teal[500]
-// const pages = ['About', 'Menu', 'Contact'];
 
 const pages = [
     { title: "About", route: "about" },
@@ -26,36 +24,36 @@ const pages = [
     { title: "Contact", route: "contact" }
 ]
 
-const settings = ['New Reservation', 'Check Reservation'];
+const actions = [
+    { title: "New Reservation", route: "reservation" },
+    { title: "Check Reservation", route: "checkreservation" },
+]
 
 const Navbar = () => {
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorNav, setAnchorNav] = React.useState(null);
+    const [anchorActions, setAnchorActions] = React.useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+    const openNavMenu = (event) => {
+        setAnchorNav(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+    const closeNavMenu = () => {
+        setAnchorNav(null);
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
+    const openActions = (event) => {
+        setAnchorActions(event.currentTarget);
     };
 
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
+    const closeActions = () => {
+        setAnchorActions(null);
     };
-
-
 
     return (
         <AppBar position="static" sx={{ bgcolor: '#263238' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                     <Fastfood sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
 
                     <Typography
@@ -82,14 +80,14 @@ const Navbar = () => {
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
+                            onClick={openNavMenu}
                             color="inherit"
                         >
                             <MenuIcon />
                         </IconButton>
                         <Menu
                             id="menu-appbar"
-                            anchorEl={anchorElNav}
+                            anchorEl={anchorNav}
                             anchorOrigin={{
                                 vertical: 'bottom',
                                 horizontal: 'left',
@@ -99,15 +97,15 @@ const Navbar = () => {
                                 vertical: 'top',
                                 horizontal: 'left',
                             }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
+                            open={Boolean(anchorNav)}
+                            onClose={closeNavMenu}
                             sx={{
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
 
                             {pages.map((page) => (
-                                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page.title} onClick={closeNavMenu}>
                                     <Link to={`/${page.route}`} style={{ textDecoration: 'none', color: '#000' }}>
                                         <Typography textAlign="center">{page.title}</Typography>
                                     </Link>
@@ -141,7 +139,7 @@ const Navbar = () => {
                             <Link to={`/${page.route}`} style={{ textDecoration: 'none' }}>
                                 <Button
                                     key={page.title}
-                                    onClick={handleCloseNavMenu}
+                                    onClick={closeNavMenu}
                                     sx={{ my: 2, color: 'white', display: 'block' }}
                                 >{page.title}
                                 </Button>
@@ -149,18 +147,16 @@ const Navbar = () => {
                         ))}
                     </Box>
 
-
-
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Tooltip title="Open actions">
+                            <IconButton onClick={openActions} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFB7YTsWCRESfUK4fOfNKQQrun-dAr5aOquespcImJO2_j0nxQOaA-0RtPHiVm2r44Hjg&usqp=CAU" />
                             </IconButton>
                         </Tooltip>
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
-                            anchorEl={anchorElUser}
+                            anchorEl={anchorActions}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
@@ -170,18 +166,18 @@ const Navbar = () => {
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
+                            open={Boolean(anchorActions)}
+                            onClose={closeActions}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                            {actions.map((item) => (
+                                <MenuItem key={item.title} onClick={closeActions} >
+                                    <Link to={`/${item.route}`} style={{ textDecoration: 'none', color: '#000' }}>
+                                        <Typography textAlign="center">{item.title}</Typography>
+                                    </Link>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
-
-
                 </Toolbar>
             </Container>
         </AppBar>

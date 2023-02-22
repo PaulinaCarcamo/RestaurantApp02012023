@@ -15,14 +15,12 @@ import Stack from '@mui/material/Stack';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { ContactMail, Restaurant } from '@mui/icons-material';
+import { Restaurant } from '@mui/icons-material';
 import { teal } from '@mui/material/colors';
-
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -37,14 +35,13 @@ const theme = createTheme();
 const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-
-const ReservationForm = () => {
+//RSVNrsvnForm
+const RsvnForm = () => {
 
     const [name, setName] = React.useState("");
     const [lastname, setLastname] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [phone, setPhone] = React.useState("");
-    // const [message, setMessage] = React.useState("");
     const [date, setDate] = React.useState(null);
     const [time, setTime] = React.useState(null);
     const [table, setTable] = React.useState("");
@@ -54,8 +51,6 @@ const ReservationForm = () => {
         horizontal: 'center',
     });
     const { vertical, horizontal } = state;
-    const [value, setValue] = React.useState(null);
-    const [age, setAge] = React.useState('');
 
     const db = getFirestore(FirebaseDb);
     const dbRef = collection(db, "reservations");
@@ -64,9 +59,9 @@ const ReservationForm = () => {
         lastname: lastname,
         email: email,
         phone: phone,
-        // message: message
         date: JSON.stringify(date),
         time: JSON.stringify(time),
+        table: table,
     }
 
     const Submit = (e) => {
@@ -82,7 +77,7 @@ const ReservationForm = () => {
             })
     }
 
-    const handleClose = (event, reason) => {
+    const closeSnackbar = (event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
@@ -90,7 +85,7 @@ const ReservationForm = () => {
     };
 
     const handleChange = (event) => {
-        setAge(event.target.value);
+        setTable(event.target.value);
     };
 
     return (
@@ -98,11 +93,7 @@ const ReservationForm = () => {
             <ThemeProvider theme={theme}>
                 <Grid container component="main" sx={{ height: '90vh' }}>
                     <CssBaseline />
-                    <Grid
-                        item
-                        xs={false}
-                        sm={4}
-                        md={7}
+                    <Grid item xs={false} sm={4} md={7}
                         sx={{
                             backgroundImage: 'url(https://coastiesmag.com.au/wp-content/uploads/2021/02/Diner-1.jpg)',
                             backgroundRepeat: 'no-repeat',
@@ -115,14 +106,9 @@ const ReservationForm = () => {
                     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
 
                         <Container>
-                            <Box
-                                sx={{
-                                    marginTop: 8,
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                }}
-                            >
+                            <Box sx={{
+                                marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center'
+                            }}>
                                 <Avatar sx={{ m: 1, bgcolor: 'teal' }}>
                                     <Restaurant />
                                 </Avatar>
@@ -131,6 +117,7 @@ const ReservationForm = () => {
                                 </Typography>
                                 <Box component="form" noValidate onSubmit={Submit} sx={{ mt: 3 }}>
                                     <Grid container spacing={2}>
+
                                         <Grid item xs={12} sm={6}>
                                             <TextField
                                                 autoComplete="given-name"
@@ -144,6 +131,7 @@ const ReservationForm = () => {
                                                 onChange={(e) => setName(e.target.value)}
                                             />
                                         </Grid>
+
                                         <Grid item xs={12} sm={6}>
                                             <TextField
                                                 required
@@ -156,6 +144,7 @@ const ReservationForm = () => {
                                                 onChange={(e) => setLastname(e.target.value)}
                                             />
                                         </Grid>
+
                                         <Grid item xs={12}>
                                             <TextField
                                                 required
@@ -168,6 +157,7 @@ const ReservationForm = () => {
                                                 onChange={(e) => setEmail(e.target.value)}
                                             />
                                         </Grid>
+
                                         <Grid item xs={12}>
                                             <TextField
                                                 required
@@ -180,7 +170,6 @@ const ReservationForm = () => {
                                                 onChange={(e) => setPhone(e.target.value)}
                                             />
                                         </Grid>
-
 
                                         <Grid item xs={12} sm={6}>
                                             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -215,7 +204,7 @@ const ReservationForm = () => {
                                                 <Select
                                                     labelId="demo-simple-select-label"
                                                     id="demo-simple-select"
-                                                    value={age}
+                                                    value={table}
                                                     label="Table"
                                                     onChange={handleChange}
                                                 >
@@ -226,31 +215,6 @@ const ReservationForm = () => {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-
-
-
-                                        {/* <Grid item xs={12}>
-                                            <TextField
-                                                id="outlined-multiline-flexible"
-                                                fullWidth
-                                                label="Message"
-                                                multiline
-                                                rows={4}
-                                                value={message}
-                                                onChange={(e) => setMessage(e.target.value)}
-                                            />
-                                        </Grid> */}
-
-                                        {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                            <DatePicker
-                                                label="Basic example"
-                                                value={value}
-                                                onChange={(newValue) => {
-                                                    setValue(newValue);
-                                                }}
-                                                renderInput={(params) => <TextField {...params} />}
-                                            />
-                                        </LocalizationProvider> */}
 
                                         <Grid item xs={12}>
                                             <FormControlLabel
@@ -272,11 +236,11 @@ const ReservationForm = () => {
                                     <Stack spacing={2} sx={{ width: '100%' }}>
                                         <Snackbar open={open}
                                             autoHideDuration={6000}
-                                            onClose={handleClose}
+                                            onClose={closeSnackbar}
                                             anchorOrigin={{ vertical, horizontal }}
                                             key={vertical + horizontal}
                                         >
-                                            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                                            <Alert onClose={closeSnackbar} severity="success" sx={{ width: '100%' }}>
                                                 This is a success message!
                                             </Alert>
                                         </Snackbar>
@@ -299,4 +263,4 @@ const ReservationForm = () => {
     );
 }
 
-export default ReservationForm;
+export default RsvnForm;

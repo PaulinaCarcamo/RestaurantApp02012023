@@ -1,15 +1,15 @@
 import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
-import ReservationForm from "../components/ReservationForm.js";
+import RsvnForm from "../components/ReservationForm.js";
 
-const Reservation = () => {
+const Rsvn = () => {
     return (
         <div>
             <Navbar />
-            <ReservationForm />
+            <RsvnForm />
             <Footer />
         </div>
     )
 }
 
-export default Reservation;
+export default Rsvn;
