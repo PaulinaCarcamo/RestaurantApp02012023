@@ -1,7 +1,6 @@
 import { collection, getDocs, getFirestore, query } from "firebase/firestore";
 import { useEffect, useState } from "react"
 import FirebaseDb from "../firebase/firebase";
-import SearchReservation from "./RsvnSearch";
 
 //Fetching collection data from firebase. 
 
@@ -31,16 +30,13 @@ const RsvnInfo = () => {
         <div>
 
             {details.map(item => (
-                // <div>
-                //     <div>{item.id}</div>
-                //      <div>{item.name}</div>
-                //     <div>{item.lastname}</div>
-                //     <hr />
-                // </div>
-
-                <SearchReservation item={item} />
+                <div>
+                    <div>{item.id}</div>
+                     <div>{item.name}</div>
+                    <div>{item.lastname}</div>
+                    <hr />
+                </div>
             ))}
-
         </div>
     )
 }
