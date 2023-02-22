@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Paper from '@mui/material/Paper';
@@ -8,13 +9,10 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { teal } from '@mui/material/colors';
 
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
-import OutlinedCard from '../components/Cards.js';
 
-const color = teal[500];
 const theme = createTheme();
 
 const headingFont = createTheme({
@@ -54,7 +52,6 @@ const Home = () => {
                             >
                                 <Container maxWidth="sm">
 
-
                                     <Typography
                                         theme={headingFont}
                                         component="h1"
@@ -67,8 +64,8 @@ const Home = () => {
                                     </Typography>
 
 
-                                    <Typography variant="h5" align="center" color="text.secondary" paragraph 
-                                    theme={contentFont}>
+                                    <Typography variant="h5" align="center" color="text.secondary" paragraph
+                                        theme={contentFont}>
                                         Bistro's Café has been a long-standing tradition in Alaska for some time now. With retro 50s details that are unmistakable from the outside in, Bistro's is serving up a classic menu along with some local favorites. With delicious dishes such as pancakes or waffles and a classic chili burger, this menu is sure to warm anyone up on a cold day or night.
                                     </Typography>
                                     <Stack
@@ -77,7 +74,10 @@ const Home = () => {
                                         spacing={2}
                                         justifyContent="center"
                                     >
-                                        <Button variant="contained">Make a reservation</Button>
+                                        <Link to="/reservation" style={{ textDecoration: 'none' }}>
+                                            <Button variant="contained" sx={{bgcolor: 'teal'}}>Make a reservation</Button>
+                                        </Link>
+
                                         <Button variant="outlined">Request delivery</Button>
                                     </Stack>
                                 </Container>

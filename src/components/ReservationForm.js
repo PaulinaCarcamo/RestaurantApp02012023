@@ -109,7 +109,7 @@ const RsvnForm = () => {
                             <Box sx={{
                                 marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center'
                             }}>
-                                <Avatar sx={{ m: 1, bgcolor: 'teal' }}>
+                                <Avatar sx={{ m: 1, bgcolor: '#03a9f4' }}>
                                     <Restaurant />
                                 </Avatar>
                                 <Typography component="h1" variant="h5">
@@ -197,7 +197,6 @@ const RsvnForm = () => {
                                             </LocalizationProvider>
                                         </Grid>
 
-
                                         <Grid item xs={12}>
                                             <FormControl fullWidth>
                                                 <InputLabel id="demo-simple-select-label">Table</InputLabel>
@@ -228,7 +227,7 @@ const RsvnForm = () => {
                                         type="submit"
                                         fullWidth
                                         variant="contained"
-                                        sx={{ mt: 3, mb: 2, bgcolor: 'teal' }}
+                                        sx={{ mt: 3, mb: 2, bgcolor: '#03a9f4' }}
                                     >
                                         Submit
                                     </Button>

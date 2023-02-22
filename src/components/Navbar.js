@@ -12,11 +12,8 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Tooltip from '@mui/material/Tooltip';
-// import { teal } from '@mui/material/colors';
 import { Fastfood } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-
-// const color = teal[500]
 
 const pages = [
     { title: "About", route: "about" },
@@ -60,7 +57,6 @@ const Navbar = () => {
                         variant="h6"
                         noWrap
                         component="a"
-                        href="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
@@ -71,7 +67,9 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        BISTRO
+                        <Link to="/" style={{ textDecoration: 'none', color: '#fff' }}>
+                            BISTRO
+                        </Link>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -103,7 +101,6 @@ const Navbar = () => {
                                 display: { xs: 'block', md: 'none' },
                             }}
                         >
-
                             {pages.map((page) => (
                                 <MenuItem key={page.title} onClick={closeNavMenu}>
                                     <Link to={`/${page.route}`} style={{ textDecoration: 'none', color: '#000' }}>
@@ -111,10 +108,10 @@ const Navbar = () => {
                                     </Link>
                                 </MenuItem>
                             ))}
-
                         </Menu>
                     </Box>
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
                     <Typography
                         variant="h5"
                         noWrap
@@ -131,7 +128,9 @@ const Navbar = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        BISTRO
+                        <Link to="/" style={{ textDecoration: 'none', color: '#fff' }}>
+                            BISTRO
+                        </Link>
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>

@@ -16,12 +16,10 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ContactMail } from '@mui/icons-material';
-import { teal } from '@mui/material/colors';
 
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import FirebaseDb from '../firebase/firebase.js';
 
-const color = teal[500];
 const theme = createTheme();
 
 const Alert = React.forwardRef(function Alert(props, ref) {

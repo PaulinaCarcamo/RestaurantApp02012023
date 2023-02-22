@@ -83,7 +83,7 @@ const Menu = () => {
             <Navbar />
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <Container maxWidth="lg" sx={{ my: 8 }}>
+                <Container maxWidth="lg" sx={{ mt:4, mb: 8 }}>
                     <main>
 
                         <MainMeals post={mainMeals} />
