@@ -75,18 +75,14 @@ const RsvnFetchSearch = () => {
                         <form onSubmit={(e) => { SearchBlog(e) }}
                         >
                             {/* <InputLabel htmlFor="my-input">Your Reservation</InputLabel> */}
-
                             <Box sx={{ display: 'flex' }}>
                                 <OutlinedInput focused id="my-input" aria-describedby="my-helper-text"
                                     onChange={(e) => { setSearch(e.target.value) }}
                                 />
-
                                 <Button type="submit">
                                     <Search />
                                 </Button>
-
                             </Box>
-
                             <FormHelperText id="my-helper-text">Search by name or lastname</FormHelperText>
                         </form>
 
@@ -114,7 +110,8 @@ const RsvnFetchSearch = () => {
                                     name="date"
                                     autoComplete="date"
                                     autoFocus
-                                    defaultValue={item.date}
+                                    // defaultValue={item.date}
+                                    defaultValue={(item.date).slice(1, 11)}
                                 />
                                 <TextField
                                     disabled
@@ -126,6 +123,7 @@ const RsvnFetchSearch = () => {
                                     autoComplete="time"
                                     autoFocus
                                     defaultValue={item.time}
+                                // defaultValue={(item.time).slice(12, 17)}
                                 />
 
                                 <TextField

@@ -15,7 +15,6 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Restaurant } from '@mui/icons-material';
-// import { teal } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -30,7 +29,6 @@ import { collection, addDoc, getFirestore } from "firebase/firestore";
 import FirebaseDb from '../firebase/firebase.js';
 import { allimages } from '../data/allimages.js';
 
-// const color = teal[500];
 const theme = createTheme();
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -62,7 +60,8 @@ const RsvnForm = () => {
         email: email,
         phone: phone,
         date: JSON.stringify(date),
-        time: JSON.stringify(time),
+        // time: JSON.stringify(time),
+        time: time,
         table: table,
     }
 
@@ -186,7 +185,7 @@ const RsvnForm = () => {
                                             </LocalizationProvider>
                                         </Grid>
 
-                                        <Grid item xs={12} sm={6}>
+                                        {/* <Grid item xs={12} sm={6}>
                                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                 <TimePicker
                                                     label="Time"
@@ -197,6 +196,18 @@ const RsvnForm = () => {
                                                     renderInput={(params) => <TextField {...params} fullWidth />}
                                                 />
                                             </LocalizationProvider>
+                                        </Grid> */}
+
+                                        <Grid item xs={12} sm={6}>
+                                            <TextField
+                                                fullWidth
+                                                id="time"
+                                                label="Time"
+                                                type="time"
+                                                defaultValue="00:00"
+                                                value={time}
+                                                onChange={(e) => setTime(e.target.value)}
+                                            />
                                         </Grid>
 
                                         <Grid item xs={12}>
