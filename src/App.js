@@ -6,9 +6,8 @@ import Contact from './views/Contact.js';
 import About from './views/About.js';
 import Menu from './views/Menu.js';
 import Rsvn from './views/Reservation.js';
+import RsvnSearch from './views/RsvnSearch.js';
 import './App.css';
-import RsvnDoc from './data/ReservationDoc.js';
-import RsvnSearch from './components/ReservationSearch.js';
 
 function App() {
   return (

@@ -1,0 +1,5 @@
+export const allimages = [
+    {
+        img: 'https://ucb3331d6c1f035853da23770e21.previews.dropboxusercontent.com/p/thumb/AB2JijXBxhP3ldS26W56GHuOxhaXk-IVo5GBJGZbInz80qf88XYvMeWcUIkyM0mrZF4TXFcc7u2KcqyqIe1E1hR-7XXGa4bs_WdJB-sfHiyv9fxdx26gQXEgjC7UZvDfeWNxIFewQnQgAAoGgt1G7RAIy7knjz9foFeVan9MSfmbzvSRuGSphC4RB1wcV_novhwizcapgN7582uviL8Z-51nrGYZtQ_zCSh9HoFS4NbNGQZyDwUTEyLN1l7BZePxpWjjBkII2akti03ebaIOWrgYPR2arsYJyNejaHycqeqK6bhBgwAd_3_4TUqf5w5ZJu1ohzYQy2ulX7Fe1pis7_R3KKyRYndUj6ZdLX6kQS4ANPjCKQ2FMz0AgiH1llQrt_3RO-TUfhd2wfPxwSdKbcBJ5glYRNYPY1CnOCftqItF9w/p.jpeg'
+    }
+]

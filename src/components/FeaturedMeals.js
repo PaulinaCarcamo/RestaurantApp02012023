@@ -34,7 +34,7 @@ const FeaturedMeals = (props) => {
                         <Typography variant="subtitle1" paragraph theme={contentFont}>
                             {post.description}
                         </Typography>
-                        <Typography variant="subtitle1" color="primary">
+                        <Typography variant="subtitle1" color="secondary">
                             Delivery
                         </Typography>
                     </CardContent>

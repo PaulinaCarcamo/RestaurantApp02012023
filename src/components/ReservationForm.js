@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
@@ -26,6 +25,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+import { Link } from 'react-router-dom';
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import FirebaseDb from '../firebase/firebase.js';
 
@@ -91,7 +91,7 @@ const RsvnForm = () => {
     return (
         <React.Fragment>
             <ThemeProvider theme={theme}>
-                <Grid container component="main" sx={{ height: '90vh' }}>
+                <Grid container component="main" sx={{ minHeight: '80vh' }}>
                     <CssBaseline />
                     <Grid item xs={false} sm={4} md={7}
                         sx={{
@@ -240,16 +240,18 @@ const RsvnForm = () => {
                                             key={vertical + horizontal}
                                         >
                                             <Alert onClose={closeSnackbar} severity="success" sx={{ width: '100%' }}>
-                                                This is a success message!
+                                                Reservation created successfully!
                                             </Alert>
                                         </Snackbar>
                                     </Stack>
 
                                     <Grid container justifyContent="flex-end">
                                         <Grid item>
-                                            <Link href="#" variant="body2">
-                                                Already subscribed?
-                                            </Link>
+                                            <Typography>
+                                                <Link to="/contact">
+                                                    Want to contact us?
+                                                </Link>
+                                            </Typography>
                                         </Grid>
                                     </Grid>
                                 </Box>

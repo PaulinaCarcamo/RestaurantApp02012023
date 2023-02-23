@@ -1,6 +1,6 @@
+import RsvnForm from "../components/ReservationForm.js";
 import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
-import RsvnForm from "../components/ReservationForm.js";
 
 const Rsvn = () => {
     return (

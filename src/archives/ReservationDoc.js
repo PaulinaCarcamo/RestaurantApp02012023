@@ -5,9 +5,7 @@ import FirebaseDb from "../firebase/firebase.js";
 //Fetching data from Firebase: Single document. 
 
 const RsvnDoc = () => {
-
     const db = getFirestore(FirebaseDb);
-
     const docData = async () => {
         class Doc {
             constructor(name, lastname, email) {
@@ -19,7 +17,6 @@ const RsvnDoc = () => {
                 return this.name + ', ' + this.lastname + ', ' + this.email;
             }
         }
-
         // Firestore data converter
         const docConverter = {
             toFirestore: (doc) => {
@@ -47,7 +44,6 @@ const RsvnDoc = () => {
             console.log("No such document!");
         }
     }
-
     useEffect(() => {
         docData();
     }, []);

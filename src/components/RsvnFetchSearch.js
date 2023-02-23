@@ -9,30 +9,15 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { FormHelperText, Input, InputLabel } from '@mui/material';
-import { Pageview } from '@mui/icons-material';
+import { FormHelperText, IconButton, Input, InputLabel, OutlinedInput } from '@mui/material';
+import { Description, Pageview, Search } from '@mui/icons-material';
+
 import { collection, getDocs, getFirestore, query } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import FirebaseDb from '../firebase/firebase.js';
 
-import Navbar from './Navbar.js';
-import Footer from './Footer.js';
-
 const theme = createTheme();
 const db = getFirestore(FirebaseDb);
-
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
 
 // const handleSubmit = (event) => {
 //     event.preventDefault();
@@ -43,7 +28,7 @@ function Copyright(props) {
 //     });
 // };
 
-const RsvnSearch = () => {
+const RsvnFetchSearch = () => {
 
     const [rsvns, setRsvns] = useState([]);
     const [search, setSearch] = useState('');
@@ -75,35 +60,47 @@ const RsvnSearch = () => {
 
     return (
         <React.Fragment>
-            <Navbar />
             <ThemeProvider theme={theme}>
-                <Container component="main" maxWidth="xs">
+                <Container component="main" maxWidth="xs" sx={{ minHeight: '75vh' }}>
                     <CssBaseline />
                     <Box
                         sx={{
-                            marginTop: 8,
+                            mt: 4,
+                            mb: 8,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
+                            gap: '20px'
                         }}
                     >
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                            <Pageview />
+                        <Avatar sx={{ m: 1, bgcolor: '#536dfe' }}>
+                            <Description />
                         </Avatar>
-                        {/* <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography> */}
-                        <form onSubmit={(e) => { SearchBlog(e) }} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
-                            <InputLabel htmlFor="my-input">Your Reservation</InputLabel>
-                            <Input id="my-input" aria-describedby="my-helper-text"
-                                onChange={(e) => { setSearch(e.target.value) }} />
+
+                        <Typography component="h1" variant="h5">
+                            Reservation Status
+                        </Typography>
+                        <Typography>To find your reservation, please search by typing your NAME or LASTNAME.</Typography>
+                        <form onSubmit={(e) => { SearchBlog(e) }}
+                        >
+                            {/* <InputLabel htmlFor="my-input">Your Reservation</InputLabel> */}
+
+                            <Box sx={{ display: 'flex' }}>
+                                <OutlinedInput focused id="my-input" aria-describedby="my-helper-text"
+                                    onChange={(e) => { setSearch(e.target.value) }}
+                                />
+
+                                <Button type="submit">
+                                    <Search />
+                                </Button>
+
+                            </Box>
+
                             <FormHelperText id="my-helper-text">Search by name or lastname</FormHelperText>
-                            <Button type="submit">Search</Button>
                         </form>
 
                         {searchRsvns.map(item => (
                             <Box component="form"
-                                // onSubmit={handleSubmit} 
                                 noValidate sx={{ mt: 1 }}
                                 key={item.id}>
                                 <TextField
@@ -152,26 +149,19 @@ const RsvnSearch = () => {
                                     defaultValue={item.table}
                                 />
                                 <Grid container>
-                                    <Grid item xs>
-                                        <Link href="#" variant="body2">
-                                            Forgot password?
-                                        </Link>
-                                    </Grid>
                                     <Grid item>
-                                        <Link href="#" variant="body2">
-                                            {"Don't have an account? Sign Up"}
+                                        <Link href="/contact" variant="body2">
+                                            {"In case of changes contact us"}
                                         </Link>
                                     </Grid>
                                 </Grid>
                             </Box>
                         ))}
                     </Box>
-                    <Copyright sx={{ mt: 8, mb: 4 }} />
                 </Container>
             </ThemeProvider>
-            <Footer />
         </React.Fragment>
     );
 };
 
-export default RsvnSearch;
+export default RsvnFetchSearch;

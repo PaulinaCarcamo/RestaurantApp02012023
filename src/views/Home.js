@@ -12,6 +12,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
+import { allimages } from '../data/allimages.js';
 
 const theme = createTheme();
 
@@ -44,27 +45,24 @@ const Home = () => {
                         sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}
                     >
                         <Container>
-                            {/* Hero unit */}
-                            <Box
-                                sx={{
-                                    bgcolor: 'background.paper',
-                                }}
-                            >
+                            <Box sx={{ bgcolor: 'background.paper' }}>
                                 <Container maxWidth="sm">
 
                                     <Typography
                                         theme={headingFont}
                                         component="h1"
                                         variant="h2"
-                                        // align="center"
                                         color="text.primary"
                                         gutterBottom
                                     >
                                         Bistro Café
                                     </Typography>
 
-
-                                    <Typography variant="h5" align="center" color="text.secondary" paragraph
+                                    <Typography
+                                        variant="h5"
+                                        align="center"
+                                        color="text.secondary"
+                                        paragraph
                                         theme={contentFont}>
                                         Bistro's Café has been a long-standing tradition in Alaska for some time now. With retro 50s details that are unmistakable from the outside in, Bistro's is serving up a classic menu along with some local favorites. With delicious dishes such as pancakes or waffles and a classic chili burger, this menu is sure to warm anyone up on a cold day or night.
                                     </Typography>
@@ -75,36 +73,36 @@ const Home = () => {
                                         justifyContent="center"
                                     >
                                         <Link to="/reservation" style={{ textDecoration: 'none' }}>
-                                            <Button variant="contained" sx={{bgcolor: 'teal'}}>Make a reservation</Button>
+                                            <Button variant="contained" sx={{ bgcolor: 'teal' }}>
+                                                Make a reservation
+                                            </Button>
                                         </Link>
 
-                                        <Button variant="outlined">Request delivery</Button>
+                                        <Link to="/menu" style={{ textDecoration: 'none' }}>
+                                            <Button variant="outlined">Request delivery</Button>
+                                        </Link>
                                     </Stack>
                                 </Container>
-
-                                {/* <OutlinedCard /> */}
-
                             </Box>
-                            {/* End hero unit */}
-
-
                         </Container>
                     </Grid>
 
-                    <Grid
-                        item
-                        xs={false}
-                        sm={4}
-                        md={7}
-                        sx={{
-                            backgroundImage: 'url(https://m3arch.com/img/projects/americandiner/americandiner-1.jpg)',
-                            backgroundRepeat: 'no-repeat',
-                            backgroundColor: (t) =>
-                                t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                        }}
-                    />
+                    {allimages.map(item => (
+                        <Grid
+                            item
+                            xs={false}
+                            sm={4}
+                            md={7}
+                            sx={{
+                                backgroundImage: `url(${item.img})`,
+                                backgroundRepeat: 'no-repeat',
+                                backgroundColor: (t) =>
+                                    t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                            }}
+                        />
+                    ))}
                 </Grid>
             </ThemeProvider>
             <Footer />
