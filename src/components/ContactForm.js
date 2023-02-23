@@ -38,6 +38,7 @@ const ContactForm = () => {
         vertical: 'top',
         horizontal: 'center',
     });
+    console.log(setState);
     const { vertical, horizontal } = state;
 
     const db = getFirestore(FirebaseDb);

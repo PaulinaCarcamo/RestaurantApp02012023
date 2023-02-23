@@ -15,7 +15,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Restaurant } from '@mui/icons-material';
-import { teal } from '@mui/material/colors';
+// import { teal } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -29,7 +29,7 @@ import { Link } from 'react-router-dom';
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import FirebaseDb from '../firebase/firebase.js';
 
-const color = teal[500];
+// const color = teal[500];
 const theme = createTheme();
 
 const Alert = React.forwardRef(function Alert(props, ref) {
@@ -50,6 +50,7 @@ const RsvnForm = () => {
         vertical: 'top',
         horizontal: 'center',
     });
+    console.log(setState);
     const { vertical, horizontal } = state;
 
     const db = getFirestore(FirebaseDb);

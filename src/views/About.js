@@ -11,13 +11,12 @@ import Typography from '@mui/material/Typography';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import { Favorite, Image } from '@mui/icons-material';
+import { Favorite } from '@mui/icons-material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Navbar from '../components/Navbar.js';
 import Footer from '../components/Footer.js';
 import { aboutCards } from '../data/aboutCards.js';
-import { padding } from '@mui/system';
 
 const theme = createTheme();
 const contentFont = createTheme({
