@@ -16,9 +16,10 @@ import MuiAlert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { ContactMail } from '@mui/icons-material';
 
+import { Link } from 'react-router-dom';
 import { collection, addDoc, getFirestore } from "firebase/firestore";
 import FirebaseDb from '../firebase/firebase.js';
-import { Link } from 'react-router-dom';
+import { allimages } from '../data/allimages.js';
 
 const theme = createTheme();
 
@@ -82,7 +83,7 @@ const ContactForm = () => {
                         sm={4}
                         md={7}
                         sx={{
-                            backgroundImage: 'url(https://mui.kitchen/__export/1666876495403/sites/muikitchen/img/2022/10/27/704568eebeb49c347cb9bacc371cbefc.jpeg_1228306336.jpeg)',
+                            backgroundImage: `url(${allimages[1].img})`,
                             backgroundRepeat: 'no-repeat',
                             backgroundColor: (t) =>
                                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

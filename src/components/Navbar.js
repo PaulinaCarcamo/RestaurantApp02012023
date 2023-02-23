@@ -15,6 +15,8 @@ import Tooltip from '@mui/material/Tooltip';
 import { Fastfood } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
+import { allimages } from '../data/allimages.js';
+
 const pages = [
     { title: "About", route: "about" },
     { title: "Menu", route: "menu" },
@@ -149,7 +151,7 @@ const Navbar = () => {
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open actions">
                             <IconButton onClick={openActions} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFB7YTsWCRESfUK4fOfNKQQrun-dAr5aOquespcImJO2_j0nxQOaA-0RtPHiVm2r44Hjg&usqp=CAU" />
+                                <Avatar alt="Remy Sharp" src={allimages[3].img} />
                             </IconButton>
                         </Tooltip>
                         <Menu

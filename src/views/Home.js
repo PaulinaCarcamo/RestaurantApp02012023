@@ -87,14 +87,14 @@ const Home = () => {
                         </Container>
                     </Grid>
 
-                    {allimages.map(item => (
+                    {/* {allimages.map(item => ( */}
                         <Grid
                             item
                             xs={false}
                             sm={4}
                             md={7}
                             sx={{
-                                backgroundImage: `url(${item.img})`,
+                                backgroundImage: `url(${allimages[0].img})`,
                                 backgroundRepeat: 'no-repeat',
                                 backgroundColor: (t) =>
                                     t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -102,7 +102,7 @@ const Home = () => {
                                 backgroundPosition: 'center',
                             }}
                         />
-                    ))}
+                     {/* ))}  */}
                 </Grid>
             </ThemeProvider>
             <Footer />
